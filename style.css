@@ -1,0 +1,738 @@
+/* ==========================================================================
+   1. ESTILOS GERAIS E LAYOUT BASE
+   ========================================================================== */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   2. HEADER E NAVEGAÇÃO
+   ========================================================================== */
+
+header {
+  background-color: #0b1a31;
+  color: white;
+  position: relative;
+  height: 110px;
+  min-height: 170px;
+  z-index: 1000;
+  border-bottom: 3px solid #d2b556;
+}
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3%;
+  height: 100%;
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  gap: 350px;
+  height: 100%;
+}
+
+.logo {
+  height: 130px;
+}
+
+.nav-menu ul {
+  display: flex;
+  flex-wrap: nowrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  align-items: center;
+}
+
+.nav-menu ul li {
+  margin: 0 10px;
+  padding: 10px 0;
+}
+
+.nav-menu ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 4px;
+  padding: 10px;
+  z-index: 1001;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* ==========================================================================
+   3. CARROSSEL SUPERIOR
+   ========================================================================== */
+
+.carousel {
+  padding: 0px;
+  margin-top: 0px;
+}
+
+.carousel-container {
+  position: relative;
+  max-width: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%; 
+}
+
+.carousel-item {
+  display: none;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.carousel-item.active {
+  display: block;
+  opacity: 1;
+}
+
+.carousel-frame {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.carousel-frame img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel-caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  width: 90%;
+}
+
+.carousel-caption h2 {
+  font-size: 52px;
+  margin: 0 0 10px;
+}
+
+.carousel-caption p {
+  font-size: 24px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.carousel-nav {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 3;
+}
+
+.nav-button {
+  width: 60px;
+  height: 8px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.nav-button.active {
+  background-color: #d4af37;
+  border-color: rgba(0, 0, 0, 0.4);
+}
+
+/* ==========================================================================
+   4. SEÇÃO DE EQUIPE
+   ========================================================================== */
+
+.grid-equipe {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  margin: 40px auto;
+  max-width: 1200px;
+  padding: 0 15px;
+}
+
+.membro {
+  position: relative;
+  width: 240px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.membro img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+}
+
+.nome-linkedin {
+  background-color: #002b5c;
+  color: white;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 0 0 4px 4px;
+}
+
+.nome-linkedin h3 {
+  margin: 0;
+  font-size: 15px;
+  color: white;
+}
+
+.nome-linkedin a {
+  color: #d4af37;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.descricao-membro {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 88%;
+  background-color: rgba(0, 43, 92, 0.9);
+  color: white;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+}
+
+.membro.active .descricao-membro {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (hover: hover) and (min-width: 769px) {
+  .membro:hover .descricao-membro {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* ==========================================================================
+   5. CARROSSEL DE ÁREAS DE ATUAÇÃO
+   ========================================================================== */
+
+.atuacao-carousel {
+  padding: 60px 0;
+  background-color: #f9f9f9;
+}
+
+.atuacao-header {
+  text-align: center;
+}
+
+.atuacao-title h2 {
+  color: #002b5c;
+  font-size: 38px;
+  margin: 0;
+}
+
+.atuacao-title p {
+  margin: 5px 0 0;
+  color: #555;
+}
+
+.atuacao-controls {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.arrow-button {
+  background-color: #e0e0e0;
+  border: 1px solid #ccc;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.arrow-button:first-child {
+  background-color: #d4af37;
+  border-color: #c8a02b;
+  color: white;
+}
+
+.arrow-button:hover {
+  background-color: #c8a02b;
+  border-color: #b38f24;
+  color: white;
+}
+
+.arrow-button:disabled {
+  background-color: #f0f0f0;
+  border-color: #ddd;
+  color: #aaa;
+  cursor: not-allowed;
+}
+
+.atuacao-slider-wrapper {
+  overflow: hidden;
+}
+
+.atuacao-slider {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.5s ease-in-out;
+}
+
+.atuacao-slider.no-transition {
+  transition: none;
+}
+
+.card-atuacao {
+  flex: 0 0 calc(33.333% - 14px); /* Define a largura para mostrar 3 cards */
+  background-color: white;
+  border: 1px solid #eee;
+  padding: 25px;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+.card-atuacao h3 {
+  color: #002b5c;
+  margin-top: 0;
+  font-size: 20px;
+}
+
+.card-atuacao p {
+  color: #555;
+  font-size: 15px;
+  line-height: 1.6;
+  /* text-align: justify; <-- REMOVIDO para alinhar à esquerda */
+}
+
+.ver-todas {
+  text-align: right;
+  margin-top: 30px;
+}
+
+.ver-todas a {
+  color: #004080;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   6. PÁGINA DE CONTATO - ATUALIZADO
+   ========================================================================== */
+
+.formulario-contato {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  align-items: flex-start; /* CORREÇÃO: Alinha as colunas pelo topo */
+  margin-top: 40px;
+}
+
+.formulario-contato form {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 50px;
+}
+
+.formulario-contato label {
+  font-weight: bold;
+  color: #002b5c;
+}
+
+.formulario-contato input,
+.formulario-contato textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 95%;
+}
+
+.formulario-contato button {
+  background-color: #004080;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.formulario-contato button:hover {
+  background-color: #002b5c;
+}
+
+.info-contato {
+  flex: 1;
+  min-width: 300px;
+  max-width: 400px;
+  color: #333;
+}
+
+.info-contato h3 {
+  color: #002b5c;
+  margin-bottom: 10px;
+}
+
+.info-contato p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+
+/* ==========================================================================
+   7. FOOTER E FAIXA INFERIOR
+   ========================================================================== */
+
+.sessao-grid {
+  background-color: #003b7c;
+  padding: 30px 0;
+}
+
+.container-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  width: 50%;
+  max-width: 2200px;
+  margin: auto;
+}
+
+  .sessao-grid a {
+    color: white;        /* muda a cor do texto */
+    text-decoration: none; /* remove o sublinhado */
+  }
+
+
+.grid-link {
+  text-decoration: none; /* Remove o sublinhado do link */
+  color: inherit;      /* Faz o link herdar a cor do texto do elemento pai */
+  display: block;      /* Faz o link ocupar todo o espaço do bloco */
+}
+
+.container-grid h2 {
+  color: #fff;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.container-grid p {
+  color: #fff;
+}
+
+footer {
+  background-color: #002b5c;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+
+}
+
+/* ==========================================================================
+   8. PÁGINA DE ÁREAS DE ATUAÇÃO (ACORDEÃO)
+   ========================================================================== */
+
+.accordion-container {
+  max-width: 900px;
+  margin: 0 auto 60px; /* Espaçamento inferior */
+}
+
+.accordion-item {
+  border-bottom: 1px solid #ddd;
+}
+
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 20px 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 600;
+  color: #002b5c;
+}
+
+.accordion-icon {
+  font-size: 24px;
+  font-weight: 300;
+  color: #555;
+  transition: transform 0.3s ease;
+}
+
+.accordion-item.active .accordion-icon {
+  transform: rotate(180deg); /* Animação opcional para o ícone de menos */
+}
+
+.accordion-content {
+  max-height: 0; /* Começa fechado */
+  overflow: hidden;
+  transition: max-height 0.4s ease-out; /* Animação de expansão */
+  padding: 0 10px;
+}
+
+.accordion-content p {
+  padding-bottom: 20px;
+  margin: 0;
+  line-height: 1.7;
+  color: #333;
+}
+
+
+/* ==========================================================================
+   9. RESPONSIVIDADE (MEDIA QUERIES)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  header {
+    height: 70px;
+  }
+
+  .nav-bar,
+  .nav-content {
+    justify-content: space-between;
+    gap: 0px;
+    width: 97%;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: absolute;
+    top: -300px;
+    left: 0;
+    width: 100%;
+    background-color: #002b5c;
+    transition: top 0.37s ease-out;
+    z-index: 999;
+    padding: 20px 0;
+  }
+
+  .nav-menu.active {
+    top: 0;
+  }
+
+  .nav-menu ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .carousel-frame img {
+    height: 350px;
+  }
+
+  .carousel-caption h2 {
+    font-size: 28px;
+  }
+
+  .carousel-caption p {
+    font-size: 16px;
+  }
+  
+  .nav-button {
+    width: 40px;
+    height: 6px;
+  }
+
+  /* Carrossel de Atuação em Telas Menores */
+  .atuacao-header {
+    align-items: center;
+  }
+  
+  .card-atuacao {
+    flex: 0 0 90%; /* Mostra 1 card por vez em telas menores */
+  }
+
+  .grid-equipe {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .membro {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .container-grid {
+    width: 90%;
+    grid-template-columns: 1fr;
+  }
+
+  .formulario-contato {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .formulario-contato form {
+    margin-bottom: 20px;
+  }
+
+  .info-contato {
+    margin-bottom: 50px;
+  }
+}
+
+/* ==========================================================================
+   10. BOTÕES DE REDES SOCIAIS (PÁGINA DE CONTATO ) - ATUALIZADO
+   ========================================================================== */
+
+.redes-sociais {
+  display: flex;
+  flex-direction: row; /* CORREÇÃO: Botões lado a lado */
+  flex-wrap: wrap;     /* Permite que quebrem a linha em telas pequenas */
+  gap: 15px;
+  margin-top: 10px;
+  margin-bottom: 30px; /* Adiciona espaço antes da próxima seção */
+}
+
+.social-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px; /* Levemente menor para caber melhor lado a lado */
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  width: auto;
+}
+
+.social-button:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.social-button i {
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+.social-button.whatsapp {
+  background-color: #25D366;
+}
+
+.social-button.instagram {
+  background-color: #E1306C;
+}
+
+/* ==========================================================================
+   11. MAPA (PÁGINA DE CONTATO)
+   ========================================================================== */
+
+.mapa-container {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  border: 2px solid #004080; /* Borda azul escura */
+  border-radius: 5px;
+  overflow: hidden; /* Garante que o iframe respeite o border-radius */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mapa-container:hover {
+  transform: scale(1.03); /* Leve zoom ao passar o mouse */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.mapa-container iframe {
+  display: block; /* Remove qualquer espaço extra abaixo do iframe */
+}
