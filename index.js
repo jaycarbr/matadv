@@ -1,186 +1,124 @@
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Matsubara Advogados</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body class="pagina-inicial">
-  <header>
-    <div class="nav-bar">
-      <div class="nav-content">
-        <img src="https://pbs.twimg.com/media/HABLP8ZWgAARAf9?format=jpg&name=orig" alt="Matsubara Advogados" class="logo" />
-        <div class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <nav class="nav-menu">
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="quemsomos.html">Quem somos</a></li>
-            <li><a href="atuacao.html">Área de atuação</a></li>
-            <li><a href="contato.html">Contato</a></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-    <div class="nav-divider"></div>
-  </header>
+document.addEventListener('DOMContentLoaded', () => {
+  // --- LÓGICA DO CARROSSEL SUPERIOR (sem alterações) ---
+  const carouselItems = document.querySelectorAll('.carousel-item');
+  const navButtons = document.querySelectorAll('.nav-button');
+  let currentSlide = 0;
+  let slideInterval;
 
-  <div class="faixa-branca"></div>
-  <div class="faixa-dourada"></div>
+  function showSlide(index) {
+    currentSlide = index >= carouselItems.length ? 0 : index < 0 ? carouselItems.length - 1 : index;
+    carouselItems.forEach(item => item.classList.remove('active'));
+    navButtons.forEach(button => button.classList.remove('active'));
+    if (carouselItems[currentSlide]) {
+      carouselItems[currentSlide].classList.add('active');
+    }
+    if (navButtons[currentSlide]) {
+      navButtons[currentSlide].classList.add('active');
+    }
+  }
 
-  <section class="carousel">
-    <div class="carousel-container">
-      <div class="carousel-item active">
-        <a href="empresa.html">
-          <div class="carousel-frame">
-            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80" alt="Empresa" />
-            <div class="carousel-overlay"></div>
-            <div class="carousel-caption">
-              <h2>Sobre a Empresa</h2>
-              <p>Conheça nossa história e valores.</p>
-            </div>
-          </div>
-        </a>
-      </div>
+  function startSlideShow() {
+    clearInterval(slideInterval);
+    slideInterval = setInterval(() => {
+      showSlide(currentSlide + 1);
+    }, 5000);
+  }
 
-      <div class="carousel-item">
-        <a href="equipe.html">
-          <div class="carousel-frame">
-            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=80" alt="Equipe" />
-            <div class="carousel-overlay"></div>
-            <div class="carousel-caption">
-              <h2>Nossa Equipe</h2>
-              <p>Profissionais especializados em diversas áreas do Direito.</p>
-            </div>
-          </div>
-        </a>
-      </div>
+  navButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const slideIndex = parseInt(button.dataset.slide, 10);
+      showSlide(slideIndex);
+      startSlideShow();
+    });
+  });
 
-      <div class="carousel-item">
-        <a href="atuacao.html">
-          <div class="carousel-frame">
-            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80" alt="Atuação" />
-            <div class="carousel-overlay"></div>
-            <div class="carousel-caption">
-              <h2>Áreas de Atuação</h2>
-              <p>Conheça os serviços jurídicos que oferecemos.</p>
-            </div>
-          </div>
-        </a>
-      </div>
+  if (carouselItems.length > 0) {
+    showSlide(currentSlide);
+    startSlideShow();
+  }
 
-      <div class="carousel-nav">
-        <button class="nav-button active" data-slide="0"></button>
-        <button class="nav-button" data-slide="1"></button>
-        <button class="nav-button" data-slide="2"></button>
-      </div>
-    </div>
-  </section>
-
-  <!-- SEÇÃO DE ÁREAS DE ATUAÇÃO (NOVO CARROSSEL DE CARDS ) -->
-  <section class="atuacao-carousel">
-    <div class="container">
-      <div class="atuacao-header">
-        <div class="atuacao-title">
-          <h2>Áreas de atuação</h2>
-          <p>Advocacia estratégica para todos os casos.</p>
-        </div>
-        <div class="atuacao-controls">
-          <button id="prev-atuacao" class="arrow-button">&lt;</button>
-          <button id="next-atuacao" class="arrow-button">&gt;</button>
-        </div>
-      </div>
-
-      <div class="atuacao-slider-wrapper">
-        <div class="atuacao-slider">
-          <div class="card-atuacao">
-            <h3>Inovação</h3>
-            <p>O trabalho envolve a elaboração e gestão de contratos de parceria com setores produtivos, instituições científicas e tecnológicas e agências de fomento. Também inclui assessoria em contratos de incubação, parques tecnológicos, direitos de startups e crowdfunding, além de consultoria voltada para incentivos fiscais à inovação e contratos de transferência de tecnologias.</p>
-          </div>
-          <div class="card-atuacao">
-            <h3>Propriedade Intelectual</h3>
-            <p>O foco está no desenvolvimento de estratégias, gestão e treinamento em contratos de entretenimento, streaming e relacionamento com influenciadores, além da proteção de direitos autorais e de personalidade, especialmente os direitos de imagem. Também são tratados contratos envolvendo inteligência artificial no âmbito dos direitos autorais, impactos de obras em domínio público e contenciosos relacionados a infrações e limitações autorais.</p>
-          </div>
-          <div class="card-atuacao">
-            <h3>Bioeconomia</h3>
-            <p>A atuação se concentra na criação de estratégias, políticas e treinamentos relacionados à repartição de benefícios, sejam monetários ou não monetários, e ao compliance com o Protocolo de Nagoia, incluindo a emissão de IRCC em países signatários. No Brasil, isso envolve a Lei de Acesso e Repartição de Benefícios, com destaque para o cadastro eletrônico no SISGEN.</p>
-          </div>
-          <div class="card-atuacao">
-            <h3>Direito Societário</h3>
-            <p>Oferecemos assessoria completa na constituição de sociedades, acordos de sócios, operações de fusões e aquisições (M&A), e reorganizações societárias. Nosso objetivo é garantir a segurança jurídica e a eficiência operacional para empresas de todos os portes, alinhando a estrutura societária aos objetivos estratégicos do negócio.</p>
-          </div>
-          <div class="card-atuacao">
-            <h3>Contratos e Negociações</h3>
-            <p>Atuamos na elaboração, revisão e negociação de contratos comerciais complexos, nacionais e internacionais. Buscamos proteger os interesses de nossos clientes, minimizando riscos e garantindo a clareza e a exequibilidade dos acordos. Nossa experiência abrange desde contratos de fornecimento e distribuição até acordos de confidencialidade.</p>
-          </div>
-          <div class="card-atuacao">
-            <h3>Compliance e LGPD</h3>
-            <p>Implementamos programas de compliance para garantir que as empresas atuem em conformidade com as leis e regulamentos aplicáveis. Oferecemos consultoria especializada na adequação à Lei Geral de Proteção de Dados (LGPD), incluindo a elaboração de políticas de privacidade, mapeamento de dados e treinamento de equipes para mitigar riscos.</p>
-          </div>
-        </div>
-      </div>
-      <div class="ver-todas">
-        <a href="atuacao.html">Ver todas as áreas</a>
-      </div>
-    </div>
-  </section>
+  // --- LÓGICA DO CARROSSEL DE ÁREAS DE ATUAÇÃO (LOOP INFINITO) ---
+  const slider = document.querySelector('.atuacao-slider');
+  const prevBtn = document.getElementById('prev-atuacao');
+  const nextBtn = document.getElementById('next-atuacao');
   
-    <div class="sessao-grid2">
-    <div class="container-grid2">
-        <section>
-          <h2 style="font-size: 36px; color: #002b5c">Sobre Nós</h2>
-          <p>Mais de 10 anos de experiência em Direito, com ética, clareza e comprometimento.
-Atendimento técnico, acessível e confiável em diversas áreas jurídicas.</p>
-     <div class="saiba-mais">
-        <a href="atuacao.html">Saiba Mais</a>
-</section><img src="https://www.immigration-lawyers.jp/wp-content/uploads/2011/09/280-400.jpg" /></section>
-    </div>
-  </div>
+  if (slider && prevBtn && nextBtn) {
+    let cards = Array.from(slider.children);
+    let currentIndex = 0;
+    let itemsPerPage = 3;
+    let isMoving = false;
 
-   <div class="sessao-grid3">
-    <div class="container-grid3">
-        <section>
-          <h2 style="font-size: 36px; color: #002b5c">Seu Caminho para a Justiça com Excelência</h2>
-          <p>Não aceite menos do que a defesa dos seus direitos com dedicação e precisão. Cada caso é tratado com seriedade, ética e compromisso em oferecer soluções jurídicas duradouras.</p><br>
-<a href="index.html">
-  <button class="botao">Agende Conosco</button>
-</a>
+    const setupSlider = () => {
+      // Determina quantos itens mostrar
+      if (window.innerWidth <= 768) {
+        itemsPerPage = 1;
+      } else {
+        itemsPerPage = 3;
+      }
 
-</section>
-    </div>
-  </div>
-  
-  <div class="sessao-grid">
-    <div class="container-grid">
-        <section>
-            <p> <a href="index.html">Home</a><br>
-              <a href="quemsomos.html">Quem somos</a><br>
-            <a href="atuacao.html">Área de atuação</a><br>
-            <a href="atuacao.html">Blog</a></p>
-        </section>
-      <a href="contato.html" class="grid-link">
-        <section>
-          <h2>Contato</h2>
-          <p>&#9993; matsubara@matsubara.adv.br  <br>
- &#9742; +55 11 96393-3548</p>
-        </section>
-      </a>
-      <a href="https://www.google.com/maps/search/?api=1&query=Rua+Vergueiro,+2045+-+Vila+Mariana,+São+Paulo+-+SP" target="_blank" class="grid-link">
-        <section>
-          <h2>Localização</h2>
-          <p>&#128205 Rua Vergueiro, 2045 - Vila Mariana, São Paulo - SP, 04101-000</p>
-        </section>
-      </a>
-    </div>
-  </div>
+      // Clona os itens para o efeito de loop
+      const cardsToClone = itemsPerPage;
+      const firstClones = cards.slice(0, cardsToClone).map(card => card.cloneNode(true));
+      const lastClones = cards.slice(-cardsToClone).map(card => card.cloneNode(true));
 
-  <footer>
-    <p>&copy; 2025 Matsubara Advogados</p>
-  </footer>
-  <script src="index.js"></script>
-  <script src="menu.js"></script>
-</body>
-</html>
+      // Limpa o slider e adiciona os clones
+      slider.innerHTML = '';
+      lastClones.forEach(clone => slider.appendChild(clone));
+      cards.forEach(card => slider.appendChild(card));
+      firstClones.forEach(clone => slider.appendChild(clone));
+      
+      // Atualiza a lista de cards para incluir os clones
+      cards = Array.from(slider.children);
+      
+      // Define a posição inicial para mostrar os primeiros itens reais
+      currentIndex = cardsToClone;
+      updateSliderPosition(false); // false = sem animação
+    };
+
+    const updateSliderPosition = (animate = true) => {
+      if (!animate) {
+        slider.classList.add('no-transition');
+      }
+
+      const cardWidth = cards[0].offsetWidth;
+      const gap = 20;
+      const moveDistance = currentIndex * (cardWidth + gap);
+      slider.style.transform = `translateX(-${moveDistance}px)`;
+
+      if (!animate) {
+        // Força o navegador a aplicar o estilo antes de remover a classe
+        setTimeout(() => slider.classList.remove('no-transition'), 50);
+      }
+    };
+
+    const moveSlider = (direction) => {
+      if (isMoving) return;
+      isMoving = true;
+
+      currentIndex += direction;
+      updateSliderPosition();
+
+      // Listener para o final da transição
+      slider.addEventListener('transitionend', () => {
+        isMoving = false;
+
+        // Lógica para o "salto" do loop
+        if (currentIndex <= itemsPerPage - 1) {
+          currentIndex = cards.length - itemsPerPage * 2;
+          updateSliderPosition(false);
+        }
+        if (currentIndex >= cards.length - itemsPerPage) {
+          currentIndex = itemsPerPage;
+          updateSliderPosition(false);
+        }
+      }, { once: true }); // O listener é removido após ser disparado uma vez
+    };
+
+    nextBtn.addEventListener('click', () => moveSlider(1));
+    prevBtn.addEventListener('click', () => moveSlider(-1));
+
+    // Configuração inicial e reconfiguração ao redimensionar
+    setupSlider();
+    window.addEventListener('resize', setupSlider);
+  }
+});
