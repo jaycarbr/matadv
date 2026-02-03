@@ -71,6 +71,7 @@ header {
 }
 
 .logo {
+    padding: 85px ;
     height: 70px;
     max-height: 70px;
     width: auto;
@@ -516,7 +517,7 @@ header {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 40px;
-    width: 50%;
+    width: 70%;
     max-width: 2200px;
     margin: auto;
 }
@@ -548,7 +549,7 @@ header {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 40px;
-    width: 30%;
+    width: 40%;
     max-width: 2200px;
     margin: auto;
 }
@@ -578,6 +579,7 @@ header {
 .sessao-grid a {
     color: white;
     text-decoration: none;
+    max-width: just-fit;
 }
 
 .grid-link {
