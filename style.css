@@ -578,6 +578,7 @@ header {
 .sessao-grid a {
     color: white;
     text-decoration: none;
+    max-width: fit-content;
 }
 
 .grid-link {
