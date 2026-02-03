@@ -37,17 +37,18 @@ img {
 }
 
 /* ==========================================================================
-2. HEADER E NAVEGAÇÃO
+2. HEADER E NAVEGAÇÃO - CORRIGIDO
 ========================================================================== */
 
 header {
     background-color: #0b1a31;
     color: white;
     position: relative;
-    height: 110px;
-    min-height: 170px;
+    height: auto !important;
+    min-height: 80px;
     z-index: 1000;
     border-bottom: 3px solid #d2b556;
+    padding: 10px 0;
 }
 
 .nav-bar {
@@ -61,12 +62,24 @@ header {
 .nav-content {
     display: flex;
     align-items: center;
-    gap: 350px;
-    height: 100%;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .logo {
-    height: 130px;
+    height: 70px;
+    max-height: 70px;
+    width: auto;
+    flex-shrink: 0;
+}
+
+.nav-menu {
+    flex: 1;
+    display: flex;
 }
 
 .nav-menu ul {
@@ -98,6 +111,8 @@ header {
     gap: 4px;
     padding: 10px;
     z-index: 1001;
+    order: 3;
+    margin-left: auto;
 }
 
 .hamburger span {
@@ -416,7 +431,7 @@ header {
 }
 
 /* ==========================================================================
-6. PÁGINA DE CONTATO - ATUALIZADO
+6. PÁGINA DE CONTATO
 ========================================================================== */
 
 .formulario-contato {
@@ -642,15 +657,25 @@ footer {
 }
 
 /* ==========================================================================
-9. RESPONSIVIDADE (MEDIA QUERIES)
+9. RESPONSIVIDADE - HEADER CORRIGIDO
 ========================================================================== */
 
 @media (max-width: 768px) {
     header {
-        height: auto;
-        min-height: 120px;
+        min-height: 70px;
+        padding: 8px 15px;
     }
 
+    .logo {
+        height: 50px !important;
+        max-width: 180px;
+    }
+    
+    .nav-content {
+        gap: 10px !important;
+        padding: 0 10px;
+    }
+    
     .nav-bar,
     .nav-content {
         justify-content: space-between;
@@ -675,10 +700,13 @@ footer {
         transition: top 0.37s ease-out;
         z-index: 999;
         padding: 20px 0;
+        order: 2;
+        display: none;
     }
 
     .nav-menu.active {
         top: 0;
+        display: block;
     }
 
     .nav-menu ul {
@@ -747,8 +775,19 @@ footer {
     }
 }
 
+/* Desktop específico */
+@media (min-width: 769px) {
+    .nav-content {
+        gap: 20rem;
+    }
+    
+    .logo {
+        height: 90px;
+    }
+}
+
 /* ==========================================================================
-10. BOTÕES DE REDES SOCIAIS (PÁGINA DE CONTATO ) - ATUALIZADO
+10. BOTÕES DE REDES SOCIAIS
 ========================================================================== */
 
 .redes-sociais {
@@ -793,7 +832,7 @@ footer {
 }
 
 /* ==========================================================================
-11. MAPA (PÁGINA DE CONTATO)
+11. MAPA
 ========================================================================== */
 
 .mapa-container {
